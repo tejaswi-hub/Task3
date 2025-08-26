@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Timeline</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Circle menu */
+    .circle-menu {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+
+    .circle-menu img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #444;
+      cursor: pointer;
+      transition: transform 0.3s ease, border 0.3s ease;
+      object-fit: cover;
+    }
+
+    .circle-menu img:hover {
+      transform: scale(1.1);
+      border: 3px solid #007BFF;
+    }
+
+    .active {
+      border: 3px solid #007BFF;
+    }
+
+    /* Content area */
+    .content {
+      display: flex;
+      max-width: 900px;
+      width: 100%;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .text-section {
+      flex: 2;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .image-section {
+      flex: 1;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-section img {
+      width: 100%;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Top Circular Images -->
+    <div class="circle-menu">
+      <img src="OIP.jpg" alt="School" onclick="showInfo('school')" id="img-school" class="active">
+      <img src="inter.jpg" alt="Intermediate" onclick="showInfo('intermediate')" id="img-inter">
+      <img src="btech.jpg" alt="BTech" onclick="showInfo('btech')" id="img-btech">
+    </div>
+
+    <!-- Info Section -->
+    <div class="content">
+      <div class="text-section" id="info-text">
+        <h2>School</h2>
+        <p>I completed my school education before Intermediate, focusing on foundational subjects and skills.</p>
+      </div>
+      <div class="image-section">
+        <img src="OIP.jpg" alt="School" id="display-img">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showInfo(stage) {
+      let text = document.getElementById("info-text");
+      let img = document.getElementById("display-img");
+
+      // Remove active class from all
+      document.getElementById("img-school").classList.remove("active");
+      document.getElementById("img-inter").classList.remove("active");
+      document.getElementById("img-btech").classList.remove("active");
+
+      if(stage === "school") {
+        text.innerHTML = "<h2>School</h2><p>I completed my school education before Intermediate, focusing on foundational subjects and skills.</p>";
+        img.src = "OIP.jpg";
+        document.getElementById("img-school").classList.add("active");
+      } 
+      else if(stage === "intermediate") {
+        text.innerHTML = "<h2>Intermediate</h2><p>I completed my Intermediate education from 2017–2021, focusing on MPC subjects.</p>";
+        img.src = "inter.jpg";
+        document.getElementById("img-inter").classList.add("active");
+      } 
+      else if(stage === "btech") {
+        text.innerHTML = "<h2>B.Tech</h2><p>I am pursuing my B.Tech in CSE (AI & ML) at CVR College of Engineering (2021–2025).</p>";
+        img.src = "btech.jpg";
+        document.getElementById("img-btech").classList.add("active");
+      }
+    }
+  </script>
+</body>
+</html>
